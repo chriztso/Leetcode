@@ -38,3 +38,25 @@ var lengthOfLongestSubstring = function(string) {
 
   return max;
 }
+
+//2nd solution
+var lengthOfLongestSubstring = function(s) {
+  let longest = 0
+  let start = 0
+  let end = 0
+  let chars = {}
+  while(end < s.length){
+      let startChar = s[start]
+      let endChar = s[end]
+      if(chars[endChar]){
+          delete chars[startChar]
+          start++
+      } else{
+          chars[endChar] = 1
+          end++
+          let currentLen = Object.keys(chars).length
+          longest = Math.max(currentLen, longest)
+      }
+  }
+  return longest
+};
