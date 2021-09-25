@@ -39,3 +39,30 @@ var setZeroes = function(matrix) {
    }
 
 }
+
+//2nd solution
+var setZeroes = function(matrix) {
+  const zeroColumns = []
+  const zeroRows = []
+  for(let rows = 0; rows < matrix.length; rows++){
+      for(let columns = 0; columns < matrix[rows].length; columns++){
+          if(matrix[rows][columns] === 0){
+              zeroColumns.push(columns)
+              zeroRows.push(rows)
+          }
+      }
+  }
+  for(let i = 0; i < zeroRows.length; i++){
+      let row = zeroRows[i]
+      for(let j = 0; j < matrix[row].length; j++){
+          matrix[row][j] = 0
+      }
+  }
+  for(let z = 0; z < zeroColumns.length; z++){
+      let column = zeroColumns[z]
+      for(let a = 0; a < matrix.length; a++){
+          matrix[a][column]= 0
+      }
+  }
+  return matrix
+};
