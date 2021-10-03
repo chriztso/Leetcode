@@ -14,3 +14,21 @@ var middleNode = function(head) {
     return nodes[index];
   }
 };
+
+
+//2nd solution
+var middleNode = function(head) {
+  let listLen = 0
+  let current = head
+  while(current !== null){
+      listLen++
+      current = current.next
+  }
+  let indexOfNodeToReturn = listLen % 2 === 0 ? listLen/2 : Math.floor(listLen/2)
+  let current2 = head
+  while(indexOfNodeToReturn > 0){
+      current2 = current2.next
+      indexOfNodeToReturn--
+  }
+  return current2
+};
